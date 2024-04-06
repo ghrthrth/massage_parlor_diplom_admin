@@ -165,7 +165,7 @@ private FragmentHomeBinding binding;
 
                 RequestBody requestBody = builder.build();
                 Request request = new Request.Builder()
-                        .url("https://claimbe.store/massage_parlor/admin_api/add.php")
+                        .url("https://claimbes.store/massage_parlor/admin_api/add.php")
                         .post(requestBody)
                         .build();
 

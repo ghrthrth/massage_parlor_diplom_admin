@@ -165,7 +165,7 @@ public class SlideshowFragment extends Fragment {
 
                 RequestBody requestBody = builder.build();
                 Request request = new Request.Builder()
-                        .url("https://claimbe.store/massage_parlor/api/add.php")
+                        .url("https://claimbes.store/massage_parlor/api/add.php")
                         .post(requestBody)
                         .build();
 

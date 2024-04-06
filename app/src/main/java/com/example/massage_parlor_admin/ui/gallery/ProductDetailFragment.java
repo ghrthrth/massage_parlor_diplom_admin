@@ -80,7 +80,7 @@ public class ProductDetailFragment extends BottomSheetDialogFragment {
         send_data.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new HttpRequestTask(mContext, "https://claimbe.store/massage_parlor/api/add_application/delete.php", params).execute();
+                new HttpRequestTask(mContext, "https://claimbes.store/massage_parlor/api/add_application/delete.php", params).execute();
                 dismiss();
                 adapter.removeItem(position);
             }
