@@ -65,7 +65,6 @@ public class ProductDetailFragment extends BottomSheetDialogFragment {
         Button send_data  = view.findViewById(R.id.button_appointment);
 
 
-
         user_idTextView.setText(user_id);
         service_idTextView.setText(service_id);
         titleTextView.setText(title);
