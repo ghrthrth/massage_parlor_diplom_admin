@@ -64,35 +64,9 @@ public class SlideshowFragment extends Fragment {
         selectPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE)
-                        != PackageManager.PERMISSION_GRANTED) {
 
-                    // Проверяем, было ли разрешение отклонено ранее с выбором "Не спрашивать снова"
-                    if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE)) {
-                        // Запрашиваем разрешение
-                        ActivityCompat.requestPermissions(getActivity(),
-                                new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-                                REQUEST_CODE_PERMISSION);
-                    } else {
-                        // Показываем диалоговое окно с объяснением
-                        new AlertDialog.Builder(getActivity())
-                                .setTitle("Необходимо разрешение")
-                                .setMessage("Для загрузки изображений из галереи необходимо предоставить разрешение на чтение внешнего хранилища!")
-                                .setPositiveButton("Перейти в настройки", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        // Перенаправляем пользователя в настройки приложения
-                                        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                                        Uri uri = Uri.fromParts("package", getActivity().getPackageName(), null);
-                                        intent.setData(uri);
-                                        startActivity(intent);
-                                    }
-                                })
-                                .setNegativeButton("Отмена", null)
-                                .show();
-                    }
-                } else {
                     openGallery();
-                }
+
             }
         });
 
@@ -115,11 +89,10 @@ public class SlideshowFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_CODE_PICK_IMAGE && resultCode == getActivity().RESULT_OK && data != null) {
             selectedImageUri = data.getData();
             ImageView imageView = binding.imageView2;
             imageView.setImageURI(selectedImageUri);
-        }
+
     }
 
     private String getRealPathFromUri(Uri uri) {
