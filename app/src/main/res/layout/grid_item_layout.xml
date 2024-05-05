@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/surname_text_view"/>
-    <TextView
+<!--    <TextView
         android:id="@+id/user_id_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -34,6 +34,16 @@
         android:id="@+id/service_id_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/user_id_text_view"/>
+        android:layout_below="@id/user_id_text_view"/>-->
+    <TextView
+        android:id="@+id/dates_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/phone_text_view"/>
+    <TextView
+        android:id="@+id/times_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dates_text_view"/>
 
 </RelativeLayout>

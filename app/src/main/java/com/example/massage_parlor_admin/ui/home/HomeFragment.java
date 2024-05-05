@@ -56,6 +56,7 @@ private FragmentHomeBinding binding;
     final TextView title = binding.title;
     final TextView description = binding.description;
     final TextView price = binding.textPrice;
+    final TextView fio = binding.textFio;
     final Button send = binding.send;
     final Button selectPhoto = binding.selectPhoto;
         selectPhoto.setOnClickListener(new View.OnClickListener() {
@@ -73,7 +74,8 @@ private FragmentHomeBinding binding;
                 String titles = title.getText().toString();
                 String descriptions = description.getText().toString();
                 String prices = price.getText().toString();
-                new HttpRequestTask().execute(titles, descriptions, prices);
+                String fios = fio.getText().toString();
+                new HttpRequestTask().execute(titles, descriptions, prices, fios);
             }
         });
         return root;
@@ -122,13 +124,15 @@ private FragmentHomeBinding binding;
             String title = params[0];
             String description = params[1];
             String price = params[2]; // Get category from params
+            String fio = params[3];
 
             try {
                 MultipartBody.Builder builder = new MultipartBody.Builder()
                         .setType(MultipartBody.FORM)
                         .addFormDataPart("title", title)
                         .addFormDataPart("description", description)
-                        .addFormDataPart("price", price);
+                        .addFormDataPart("price", price)
+                        .addFormDataPart("fio", fio);
 
                 if (selectedImageUri != null) {
                     String filePath = getRealPathFromUri(selectedImageUri);

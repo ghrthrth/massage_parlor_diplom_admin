@@ -82,6 +82,8 @@ private FragmentGalleryBinding binding;
                         JSONArray nameArray = jsonObject.getJSONArray("name");
                         JSONArray surnameArray = jsonObject.getJSONArray("surname");
                         JSONArray phoneArray = jsonObject.getJSONArray("phone");
+                        JSONArray datesArray = jsonObject.getJSONArray("dates");
+                        JSONArray timesArray = jsonObject.getJSONArray("times");
 
                         Log.d("erf", "ferf" + titleArray);
 
@@ -91,6 +93,8 @@ private FragmentGalleryBinding binding;
                         List<String> names = new ArrayList<>();
                         List<String> surnames = new ArrayList<>();
                         List<String> phones = new ArrayList<>();
+                        List<String> dates = new ArrayList<>();
+                        List<String> times = new ArrayList<>();
 
 
                         addItemsToList(user_idArray, ids);
@@ -99,8 +103,10 @@ private FragmentGalleryBinding binding;
                         addItemsToList(nameArray, names);
                         addItemsToList(surnameArray, surnames);
                         addItemsToList(phoneArray, phones);
+                        addItemsToList(datesArray, dates);
+                        addItemsToList(timesArray, times);
 
-                        displayPhotosInGrid(ids, service_ids, titles, names, surnames, phones);
+                        displayPhotosInGrid(ids, service_ids, titles, names, surnames, phones, dates, times);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -109,13 +115,13 @@ private FragmentGalleryBinding binding;
         });
     }
 
-    private void displayPhotosInGrid(List<String> ids, List<String> service_ids, List<String> titles, List<String> names, List<String> surnames, List<String> phones) {
+    private void displayPhotosInGrid(List<String> ids, List<String> service_ids, List<String> titles, List<String> names, List<String> surnames, List<String> phones, List<String> dates, List<String> times) {
         getActivity().runOnUiThread(new Runnable() {
 
             @Override
             public void run() {
                 GridView gridView = binding.gridView;
-                ImageAdapter adapter = new ImageAdapter(getContext(), ids , service_ids, titles, names, surnames, phones);
+                ImageAdapter adapter = new ImageAdapter(getContext(), ids , service_ids, titles, names, surnames, phones, dates, times);
                 gridView.setAdapter(adapter);
                 SearchView searchView = binding.searchView;
 
@@ -144,9 +150,11 @@ private FragmentGalleryBinding binding;
                         String selectedNames = names.get(position);
                         String selectedSurnames = surnames.get(position);
                         String selectedPhones = phones.get(position);
+                        String selectedDates = dates.get(position);
+                        String selectedTimes = times.get(position);
 
                         // Создание экземпляра ProductDetailFragment и его отображение
-                        ProductDetailFragment detailFragment = new ProductDetailFragment(getContext(), selectedUserId, selectedServiceId, selectedTitle, selectedNames, selectedSurnames, selectedPhones);
+                        ProductDetailFragment detailFragment = new ProductDetailFragment(getContext(), selectedUserId, selectedServiceId, selectedTitle, selectedNames, selectedSurnames, selectedPhones, selectedDates, selectedTimes);
                         // Pass the adapter to the ProductDetailFragment
                         detailFragment.setAdapter(adapter);
                         detailFragment.setPosition(position); // Set the position

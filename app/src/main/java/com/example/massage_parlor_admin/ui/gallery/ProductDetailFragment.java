@@ -28,17 +28,23 @@ public class ProductDetailFragment extends BottomSheetDialogFragment {
     private String name;
     private String surname;
     private String phone;
+
+    private String date;
+
+    private String time;
     private Context mContext;
     private ImageAdapter adapter;
     private int position;
 
-    public ProductDetailFragment(Context context, String userId, String serviceId, String titles, String names, String surnames, String phones) {
+    public ProductDetailFragment(Context context, String userId, String serviceId, String titles, String names, String surnames, String phones, String dates, String times) {
         user_id = userId;
         service_id = serviceId;
         this.title = titles;
         this.name = names;
         this.surname = surnames;
         this.phone = phones;
+        this.date = dates;
+        this.time = times;
         this.mContext = context;
     }
 
@@ -56,21 +62,25 @@ public class ProductDetailFragment extends BottomSheetDialogFragment {
         View view = inflater.inflate(R.layout.fragment_product_detail, container, false);
 
         // Заполнение полей информацией о товаре
-        TextView user_idTextView = view.findViewById(R.id.user_id);
-        TextView service_idTextView = view.findViewById(R.id.service_id);
+        //TextView user_idTextView = view.findViewById(R.id.user_id);
+        //TextView service_idTextView = view.findViewById(R.id.service_id);
         TextView titleTextView = view.findViewById(R.id.title);
         TextView nameTextView = view.findViewById(R.id.name);
         TextView surnameTextView = view.findViewById(R.id.surname);
         TextView phoneTextView = view.findViewById(R.id.phone);
+        TextView dateTextView = view.findViewById(R.id.date);
+        TextView timeTextView = view.findViewById(R.id.time);
         Button send_data  = view.findViewById(R.id.button_appointment);
 
 
-        user_idTextView.setText(user_id);
-        service_idTextView.setText(service_id);
-        titleTextView.setText(title);
-        nameTextView.setText(name);
-        surnameTextView.setText(surname);
-        phoneTextView.setText(phone);
+        //user_idTextView.setText(user_id);
+        //service_idTextView.setText(service_id);
+        titleTextView.setText("Услуга: " + title);
+        nameTextView.setText("Имя записавшегося: " + name);
+        surnameTextView.setText("Фамилия записавшегося: " + surname);
+        phoneTextView.setText("Телефон: " + phone);
+        dateTextView.setText("Дата на которую записались: " + date);
+        timeTextView.setText("время на которое записались: " + time);
 
         Map<String, String> params = new HashMap<>();
         params.put("user_id", user_id);
