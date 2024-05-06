@@ -45,5 +45,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/dates_text_view"/>
+    <TextView
+        android:id="@+id/fios_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/times_text_view"/>
 
 </RelativeLayout>

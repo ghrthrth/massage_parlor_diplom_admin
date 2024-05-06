@@ -67,6 +67,13 @@
         android:textSize="20sp"
         android:textColor="#666666"
         android:layout_marginBottom="8dp"/>
+    <TextView
+        android:id="@+id/fio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="#666666"
+        android:layout_marginBottom="8dp"/>
 
     <Button
         android:id="@+id/button_appointment"

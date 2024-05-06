@@ -24,12 +24,13 @@ public class ImageAdapter extends BaseAdapter implements Filterable {
     private List<String> mPhones;
     private List<String> mDates;
     private List<String> mTimes;
+    private List<String> mFios;
 
     private List<String> mFilteredTitles; // Добавьте отфильтрованные заголовки
     private LayoutInflater mInflater;
     private ItemFilter mItemFilter = new ItemFilter();
 
-    public ImageAdapter(Context mContext, List<String> mIds, List<String> mServiceIds, List<String> mTitles, List<String> mnames, List<String> msurnames, List<String> mphones, List<String> mdates, List<String> mtimes) {
+    public ImageAdapter(Context mContext, List<String> mIds, List<String> mServiceIds, List<String> mTitles, List<String> mnames, List<String> msurnames, List<String> mphones, List<String> mdates, List<String> mtimes, List<String> mfios) {
         this.mIds = mIds;
         this.mServiceIds = mServiceIds;
         this.mTitles = mTitles;
@@ -38,6 +39,7 @@ public class ImageAdapter extends BaseAdapter implements Filterable {
         this.mPhones = mphones;
         this.mDates = mdates;
         this.mTimes = mtimes;
+        this.mFios = mfios;
         mFilteredTitles = new ArrayList<>(mTitles); // Инициализируйте отфильтрованные заголовки
         mInflater = LayoutInflater.from(mContext);
     }
@@ -72,6 +74,7 @@ public class ImageAdapter extends BaseAdapter implements Filterable {
         TextView phoneTextView = convertView.findViewById(R.id.phone_text_view);
         TextView datesTextView = convertView.findViewById(R.id.dates_text_view);
         TextView timesTextView = convertView.findViewById(R.id.times_text_view);
+        TextView fiosTextView = convertView.findViewById(R.id.fios_text_view);
 
 
         // Устанавливаем данные для каждого представления
@@ -85,6 +88,7 @@ public class ImageAdapter extends BaseAdapter implements Filterable {
         String phone = mPhones.get(originalPosition);
         String date = mDates.get(originalPosition);
         String time = mTimes.get(originalPosition);
+        String fio = mFios.get(originalPosition);
 
 
 
@@ -97,6 +101,7 @@ public class ImageAdapter extends BaseAdapter implements Filterable {
         phoneTextView.setText("Телефон" + phone);
         datesTextView.setText("Дата записи " + date);
         timesTextView.setText("Время записи " + time);
+        fiosTextView.setText("Фамилия специалиста: " + fio);
 
 
         return convertView;
@@ -115,6 +120,7 @@ public class ImageAdapter extends BaseAdapter implements Filterable {
         mPhones.remove(position);
         mDates.remove(position);
         mTimes.remove(position);
+        mFios.remove(position);
         mFilteredTitles.remove(position); // Remove from the filtered list as well
         notifyDataSetChanged(); // Notify the adapter that the data set has changed
     }

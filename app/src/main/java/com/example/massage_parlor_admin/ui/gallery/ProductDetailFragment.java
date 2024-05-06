@@ -28,15 +28,14 @@ public class ProductDetailFragment extends BottomSheetDialogFragment {
     private String name;
     private String surname;
     private String phone;
-
     private String date;
-
     private String time;
+    private String fio;
     private Context mContext;
     private ImageAdapter adapter;
     private int position;
 
-    public ProductDetailFragment(Context context, String userId, String serviceId, String titles, String names, String surnames, String phones, String dates, String times) {
+    public ProductDetailFragment(Context context, String userId, String serviceId, String titles, String names, String surnames, String phones, String dates, String times, String fios) {
         user_id = userId;
         service_id = serviceId;
         this.title = titles;
@@ -45,6 +44,7 @@ public class ProductDetailFragment extends BottomSheetDialogFragment {
         this.phone = phones;
         this.date = dates;
         this.time = times;
+        this.fio = fios;
         this.mContext = context;
     }
 
@@ -70,6 +70,7 @@ public class ProductDetailFragment extends BottomSheetDialogFragment {
         TextView phoneTextView = view.findViewById(R.id.phone);
         TextView dateTextView = view.findViewById(R.id.date);
         TextView timeTextView = view.findViewById(R.id.time);
+        TextView fioTextView = view.findViewById(R.id.fio);
         Button send_data  = view.findViewById(R.id.button_appointment);
 
 
@@ -80,7 +81,8 @@ public class ProductDetailFragment extends BottomSheetDialogFragment {
         surnameTextView.setText("Фамилия записавшегося: " + surname);
         phoneTextView.setText("Телефон: " + phone);
         dateTextView.setText("Дата на которую записались: " + date);
-        timeTextView.setText("время на которое записались: " + time);
+        timeTextView.setText("Время на которое записались: " + time);
+        fioTextView.setText("К какому специалисту: " + fio);
 
         Map<String, String> params = new HashMap<>();
         params.put("user_id", user_id);
